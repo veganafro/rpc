@@ -21,3 +21,7 @@ message ElaborateRequest {
     string topic = 1;
     repeated int32 blah_run = 2;
 }
+
+message ElaborateReply {
+    string answer = 1;
+}
