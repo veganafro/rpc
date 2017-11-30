@@ -6,7 +6,7 @@ package debate;
 
 service Candidate {
     rpc Answer(AnswerRequest) returns (AnswerReply) {}
-    // rpc Elaborate(ElaborateRequest) returns (ElaborateReply) {}
+    rpc Elaborate(ElaborateRequest) returns (ElaborateReply) {}
 }
 
 message AnswerRequest {
@@ -15,4 +15,9 @@ message AnswerRequest {
 
 message AnswerReply {
     string answer = 1;
+}
+
+message ElaborateRequest {
+    string topic = 1;
+    repeated int32 blah_run = 2;
 }
