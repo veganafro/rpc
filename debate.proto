@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "net.jeremymuhia.debate";
+
+package debate;
+
+service Candidate {
+    rpc Answer(AnswerRequest) returns (AnswerReply) {}
+}
+
+message AnswerRequest {
+    string question = 1;
+}
+
+message AnswerReply {
+    string answer = 1;
+}
