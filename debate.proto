@@ -6,6 +6,7 @@ package debate;
 
 service Candidate {
     rpc Answer(AnswerRequest) returns (AnswerReply) {}
+    // rpc Elaborate(ElaborateRequest) returns (ElaborateReply) {}
 }
 
 message AnswerRequest {
