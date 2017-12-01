@@ -24,9 +24,9 @@ class Candidate(debate_pb2_grpc.CandidateServicer):
             ]
             return debate_pb2.AnswerReply(answer=replies[randint(0, 1)])
         for idx, word in enumerate(question):
-            if word is "you":
+            if word == "you":
                 question[idx] = "I"
-            elif word is "your":
+            elif word == "your":
                 question[idx] = "my"
         channel = grpc.insecure_channel("23.236.49.28:50051")
         stub = consultation_pb2_grpc.CampaignManagerStub(channel)
@@ -34,7 +34,7 @@ class Candidate(debate_pb2_grpc.CandidateServicer):
             consultation_pb2.RetortRequest(original_question=" ".join(question))
         )
         return debate_pb2.AnswerReply(
-            answer="You asked me " + " ".join(question) + " but I want to say that" + retort.retort
+            answer="You asked me " + " ".join(question) + " but I want to say that " + retort.retort
         )
 
 
