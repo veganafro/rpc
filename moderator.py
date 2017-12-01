@@ -9,6 +9,7 @@ def run():
     if direction == "answer":
         print(answer(" ".join(sys.argv[2:])))
 
+
 def answer(question):
     channel = grpc.insecure_channel("localhost:50050")
     stub = debate_pb2_grpc.CandidateStub(channel)
@@ -16,6 +17,12 @@ def answer(question):
         debate_pb2.AnswerRequest(question=question)
     )
     return reply.answer
+
+
+def elaborate(topic, blah_run):
+    channel = grpc.insecure_channel("localhost:50050")
+    stub = debate_pb2_grpc.CandidateStub(channel)
+
 
 if __name__ == "__main__":
     run()
