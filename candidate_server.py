@@ -37,6 +37,17 @@ class Candidate(debate_pb2_grpc.CandidateServicer):
             answer="You asked me " + " ".join(question) + " but I want to say that " + retort.retort
         )
 
+    def Elaborate(self, request, context):
+        topic = request.topic
+        blah_run = request.blah_run
+        if len(blah_run) == 0:
+            return topic
+        answer = []
+        for count in blah_run:
+            answer += ["blah"] * count
+            answer += [topic]
+        return " ".join(answer[:-1])
+            
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
