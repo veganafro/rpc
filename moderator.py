@@ -17,7 +17,7 @@ def run():
                 sys.argv
             )
         ))
-        print(topic, blah_run)
+        print(elaborate(topic, blah_run))
 
 
 def answer(question):

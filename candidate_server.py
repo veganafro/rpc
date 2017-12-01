@@ -46,7 +46,7 @@ class Candidate(debate_pb2_grpc.CandidateServicer):
         for count in blah_run:
             answer += ["blah"] * count
             answer += [topic]
-        return " ".join(answer[:-1])
+        return debate_pb2.ElaborateReply(answer=" ".join(answer[:-1]))
             
 
 def serve():
