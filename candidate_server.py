@@ -41,12 +41,17 @@ class Candidate(debate_pb2_grpc.CandidateServicer):
         topic = request.topic
         blah_run = request.blah_run
         if len(blah_run) == 0:
-            return topic
+            return debate_pb2.ElaborateReply(answer=topic)
         answer = []
-        for count in blah_run:
-            answer += ["blah"] * count
+        if len(blah_run) == 1:
+            answer += ["blah"] * blah_run[0]
             answer += [topic]
-        return debate_pb2.ElaborateReply(answer=" ".join(answer[:-1]))
+        else:
+            for count in blah_run[:-1]:
+                answer += ["blah"] * count
+                answer += [topic]
+            answer += ["blah"] * blah_run[-1]
+        return debate_pb2.ElaborateReply(answer=" ".join(answer))
             
 
 def serve():
