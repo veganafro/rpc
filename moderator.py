@@ -11,4 +11,8 @@ def run():
 
 def answer(question):
     channel = grpc.insecure_channel("localhost:50050")
-    stub = debate_pb2_grpc.
+    stub = debate_pb2_grpc.CandidateStub(channel)
+    reply = stub.Answer(
+        debate_pb2.AnswerRequest(question=question)
+    )
+    return reply.answer
