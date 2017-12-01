@@ -28,7 +28,7 @@ class Candidate(debate_pb2_grpc.CandidateServicer):
                 question[idx] = "I"
             elif word is "your":
                 question[idx] = "my"
-        channel = grpc.insecure_channel("localhost:50051")
+        channel = grpc.insecure_channel("23.236.49.28:50051")
         stub = consultation_pb2_grpc.CampaignManagerStub(channel)
         retort = stub.Retort(
             consultation_pb2.RetortRequest(original_question=" ".join(question))
